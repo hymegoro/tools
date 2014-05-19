@@ -1,0 +1,5 @@
+escape ^t^t
+hardstatus alwayslastline "%{= rw} %H %{= wk}%-Lw%{= bw}%n%f* %t%{= wk}%+Lw %{= wk}%=%{= gk} %y/%m/%d %c "
+
+vbell off
+setenv SCREENTITLE auto
