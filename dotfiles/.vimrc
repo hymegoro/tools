@@ -53,7 +53,21 @@ command! -bar StopReload autocmd! BufWritePost <buffer>
 
 map <F5> :StartReload<CR>
 
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
+
+" originalrepos on github
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'stephpy/vim-php-cs-fixer'
+
+" setting
 let g:user_zen_settings = {
 \  'indentation' : '  '
 \}
 
+let g:php_cs_fixer_path = "~/vendor/bin/php-cs-fixer"
