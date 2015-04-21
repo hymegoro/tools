@@ -1,8 +1,27 @@
 fpath=(~/zsh-completions/src $fpath)
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
-alias ack='ack --type-add html=.tpl,.tmpl,.tt'
-alias s='~/tools/scripts/screen_loader.sh'
-alias ls='ls --color'
+alias l='gls --color'
+alias ls='gls --color'
+alias ll='gls -al --color'
+alias lll=ll
+alias llll=ll
+
+# vcs_infoロード    
+autoload -Uz vcs_info    
+# PROMPT変数内で変数参照する    
+setopt prompt_subst    
+
+# vcsの表示    
+# zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'    
+zstyle ':vcs_info:*' formats '* %F{green}%b%f'    
+#zstyle ':vcs_info:*' actionformats ''    
+# プロンプト表示直前にvcs_info呼び出し    
+precmd() { vcs_info }    
+# プロンプト表示    
+PROMPT='%~/%f [${vcs_info_msg_0_}]
+%% '
+RPROMPT='[%D %*]'
 
 export SVN_EDITOR=vim
 export LANG=ja_JP.UTF-8
@@ -50,4 +69,7 @@ function schema() { title Schema }
 function css() { title CSS }
 function db() { title DB }
 function js() { title JS }
+
+alias fuck='$(thefuck $(fc -ln -1))'
+alias pls=fuck
 
