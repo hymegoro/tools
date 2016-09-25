@@ -17,7 +17,6 @@ while (!gzeof($fh)) {
         $gzw = gzopen($argv[1] . '.' . $fileseq, 'w');
     }
     $line = gzgets($fh, 4096);
-    echo $line . "\n";
     gzwrite($gzw, $line);
     if (++$seq == $threshold) {
         gzclose($gzw);
